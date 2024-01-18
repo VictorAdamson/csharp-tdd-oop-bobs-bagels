@@ -20,7 +20,6 @@ namespace exercise.main
             _type = type;
             _variant = variant;
             _name = _variant + " " + _type;
-
         }
         public string SKU { get { return _SKU; } }
         public float Price { get { return _price; } } 
