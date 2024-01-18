@@ -8,35 +8,16 @@ namespace exercise.main
 {
     public class Receipt
     {
-        private float totalCost;
-        private Dictionary<string, float> priceList;
-        public Receipt() 
+        private float _total;
+        List<Item> order;
+        public Receipt(float total)
         {
-            priceList = new Dictionary<string, float>();
-            priceList.Clear();
-            priceList.Add("BGLO", 0.49f);
-            priceList.Add("BGLP", 0.39f);
-            priceList.Add("BGLE", 0.49f);
-            priceList.Add("BGLS", 0.49f);
-            priceList.Add("COFB", 0.99f);
-            priceList.Add("COFW", 1.19f);
-            priceList.Add("COFC", 1.29f);
-            priceList.Add("COFL", 0.29f);
-            //priceList.Add("FILB", 0.12f);
-            //priceList.Add("FILE", 0.12f);
-            //priceList.Add("FILC", 0.12f);
-            //priceList.Add("FILX", 0.12f);
-            //priceList.Add("FILS", 0.12f);
-            //priceList.Add("FILH", 0.12f);
+            _total = total;
+            order = new List<Item>();
         }
-        public void addCost(string SKU)
+        public string showTotal(float total)
         {
-            totalCost += priceList[SKU];
-        }
-        public string printTotal()
-        {
-            string output = $"Your current total comes to: {totalCost.ToString()}";
-            return output;
+            return $"Your total comes to: {total}";
         }
     }
 }

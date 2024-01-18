@@ -1,8 +1,5 @@
 ﻿using exercise.main;
-
-Basket basket = new Basket(3);
-basket.addItem("BGLO");
-basket.addItem("BGLP");
-basket.addItem("COFB");
-
-Console.WriteLine(basket.receipt.printTotal());
+Item test = new Item("BGLO", 0.49f, "Bagel", "Onion");
+Inventory inventory = new Inventory();
+inventory.inInventory("COFB");
+Console.WriteLine("awyepp");

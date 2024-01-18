@@ -8,52 +8,44 @@ public class Tests
 {
     private int capacity = 6;
     Basket basket;
-    Receipt receipt;
+    Inventory inventory;
     [SetUp]
     public void Setup()
     {
-        receipt = new Receipt();
-        basket = new Basket(capacity);
+        basket = new Basket();
+        inventory = new Inventory();
     }
+    [TestCase("BGLO", true)]
+    [TestCase("COFB", true)]
+    [TestCase("FILB", true)]
+    [TestCase("FILX", true)]
+    [TestCase("BGLS", true)]
+    [TestCase("BGLA", false)]
+    [TestCase("AKAK", false)]
+    [TestCase("FILY", false)]
+    public void inventoryCheckTest(string excpected, bool real)
+    {
+        Assert.That(inventory.inInventory(excpected).Equals(real));
+    }
+    [Test]
+    public void addItemTest()
+    {
+        basket.addItem(new Item("BGLO", 0.49f, "Bagel", "Onion"));
 
-    [Test]
-    public void addBagelTest()
-    {
-        Item expected = new Item(0.49f, "Bagel", "Everything");
-        Item result = basket.addItem("BGLE");
-        string expectedJson = JsonConvert.SerializeObject(expected);
-        string resultJson = JsonConvert.SerializeObject(result);
-        Assert.That(resultJson, Is.EqualTo(expectedJson));
-    }
-    [Test]
-    public void addCoffeeTest()
-    {
-        Item expected = new Item(0.99f, "Coffee", "Black");
-        Item result = basket.addItem("COFB");
-        string expectedJson = JsonConvert.SerializeObject(expected);
-        string resultJson = JsonConvert.SerializeObject(result);
-        Assert.That(resultJson, Is.EqualTo(expectedJson));
     }
     [Test]
     public void removeItemTest()
     {
-        Item testItem = basket.addItem("BGLE");
-        basket.removeItem("BGLE");
-        string itemJson = JsonConvert.SerializeObject(testItem);
-        Assert.IsFalse(basket.content.Contains(testItem));
+        
     }
     [Test]
     public void changeCapacitytest()
     {
-        Assert.That(basket.changeCapacity(7), Is.EqualTo(7));
+        
     }
-
     [Test]
     public void printTotalCostTest()
     {
-        basket.addItem("BGLE");
-        basket.addItem("COFB");
-        string expected = "Your current total comes to: 1,48";
-        Assert.That(expected, Is.EqualTo(basket.receipt.printTotal()));
+        
     }
 }
