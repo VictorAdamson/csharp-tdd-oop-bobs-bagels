@@ -24,9 +24,9 @@ namespace exercise.main
         }
         private bool addFilling()
         {
-            if(this._type == "Bagel")
+            if(this._type == "Filling")
             {
-
+                
             }
             return false;
         }
