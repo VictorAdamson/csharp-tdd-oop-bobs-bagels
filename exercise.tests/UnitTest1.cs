@@ -30,8 +30,12 @@ public class Tests
     [Test]
     public void addItemTest()
     {
-        basket.addItem(new Item("BGLO", 0.49f, "Bagel", "Onion"));
-
+        Item expected = new Item("BGLE", 0.49f, "Bagel", "Everything");
+        Item result = basket.addItem(new Item ("BGLE", 0.49f, "Bagel", "Everything"));
+        Assert.That(basket.Contents.Contains(result));
+        string expectedJson = JsonConvert.SerializeObject(expected);
+        string resultJson = JsonConvert.SerializeObject(result);
+        Assert.That(resultJson, Is.EqualTo(expectedJson));
     }
     [Test]
     public void removeItemTest()

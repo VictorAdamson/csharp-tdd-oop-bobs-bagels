@@ -8,19 +8,21 @@ namespace exercise.main
 {
     public class Basket
     {
-        private int capacity = 6;
-        List<Item> contents = new List<Item>();
+        private int _capacity = 6;
+        private List<Item> _contents = new List<Item>();
+        public List<Item> Contents { get { return _contents; } }
         public Basket()
         {
 
         }
-        public bool addItem(Item item)
+        public Item addItem(Item item)
         {
-            return false;
+            Contents.Add(item);
+            return item;
         }
-        public bool removeItem(Item item)
+        public Item removeItem(Item item)
         {
-            return false;
+            return item;
         }
         public int changeBasketSize(int newSize)
         {
