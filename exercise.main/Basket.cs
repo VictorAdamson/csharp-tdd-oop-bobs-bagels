@@ -17,11 +17,11 @@ namespace exercise.main
         }
         public Item addItem(Item item)
         {
-            if (Contents.Count > 6)
+            if (Contents.Count < _capacity)
             {
-                Console.WriteLine("Your basket is already full.");
+                Contents.Add(item);
             }
-            Contents.Add(item);
+            Console.WriteLine("Your basket is already full.");
             return item;
         }
         public Item removeItem(Item item)
@@ -38,7 +38,8 @@ namespace exercise.main
         }
         public int changeBasketSize(int newSize)
         {
-            return newSize;
+            _capacity = newSize;
+            return _capacity;
         }
     }
 }

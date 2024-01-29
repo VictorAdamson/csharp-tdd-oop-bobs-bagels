@@ -55,6 +55,7 @@ public class Tests
             basket.addItem(result);
         }
         Assert.That(basket.Contents.Count, Is.EqualTo(6));
+        basket.Contents.Clear();
         basket.changeBasketSize(10);
         for (int i = 0; i < 10; i++)
         {
