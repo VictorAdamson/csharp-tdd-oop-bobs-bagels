@@ -40,7 +40,11 @@ public class Tests
     [Test]
     public void removeItemTest()
     {
-        
+        Item result = basket.addItem(new Item("BGLE", 0.49f, "Bagel", "Everything"));
+        Item dsdd = new Item("BGLO", 0.49f, "Bagel", "Onion");
+        Assert.That(basket.Contents.Contains(result));
+        basket.removeItem(result);
+        Assert.That(!basket.Contents.Contains(result));
     }
     [Test]
     public void changeCapacitytest()
