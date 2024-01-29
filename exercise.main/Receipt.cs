@@ -15,9 +15,9 @@ namespace exercise.main
             _total = total;
             order = new List<Item>();
         }
-        public string showTotal(float total)
+        public string showTotal()
         {
-            return $"Your total comes to: {total}";
+            return $"Your total comes to: {_total}";
         }
     }
 }

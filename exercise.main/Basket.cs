@@ -8,22 +8,41 @@ namespace exercise.main
 {
     public class Basket
     {
+        private Inventory _inventory = new Inventory();
         private int _capacity = 6;
         private List<Item> _contents = new List<Item>();
+        private Receipt _receipt;
+        public Receipt Receipt { get { return _receipt; } }
         public List<Item> Contents { get { return _contents; } }
         public Basket()
         {
 
         }
-        public Item addItem(Item item)
+        public Item addItem(string SKU)
         {
             if (Contents.Count < _capacity)
             {
-                Contents.Add(item);
-                return item;
+                if (_inventory.inInventory(SKU))
+                {
+                    foreach (var product in _inventory.inventory)
+                    {
+                        if (product.SKU == SKU)
+                        {
+                            Contents.Add(product);
+                            return product;
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("We do not serve that product.");
+                }
             }
-            Console.WriteLine("Your basket is already full.");
-            return item;
+            else
+            {
+                Console.WriteLine("Your basket is already full.");
+            }
+            return null;
         }
         public Item removeItem(Item item)
         {

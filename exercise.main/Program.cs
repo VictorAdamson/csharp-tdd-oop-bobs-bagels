@@ -6,6 +6,6 @@ Basket basket = new Basket();
 basket.changeBasketSize(10);
 for (int i = 0; i < 10; i++)
 {
-    basket.addItem(test);
+    basket.addItem("BGLO");
 }
 inventory.printMenu();

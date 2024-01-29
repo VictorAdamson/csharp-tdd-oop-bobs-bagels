@@ -31,17 +31,22 @@ public class Tests
     public void addItemTest()
     {
         Item expected = new Item("BGLE", 0.49f, "Bagel", "Everything");
-        Item result = basket.addItem(new Item ("BGLE", 0.49f, "Bagel", "Everything"));
+        Item result = basket.addItem("BGLE");//new Item ("BGLE", 0.49f, "Bagel", "Everything")
         Assert.That(basket.Contents.Contains(result));
         string expectedJson = JsonConvert.SerializeObject(expected);
         string resultJson = JsonConvert.SerializeObject(result);
         Assert.That(resultJson, Is.EqualTo(expectedJson));
     }
+    //[Test] 
+    //public void addNonexistantItemTest()
+    //{
+    //    Item result = basket.addItem(new Item ("BGLA", 0.49f, "Bagel", "Asphalt"));
+    //    Assert.That()
+    //}
     [Test]
     public void removeItemTest()
     {
-        Item result = basket.addItem(new Item("BGLE", 0.49f, "Bagel", "Everything"));
-        Item dsdd = new Item("BGLO", 0.49f, "Bagel", "Onion");
+        Item result = basket.addItem("BGLE");
         Assert.That(basket.Contents.Contains(result));
         basket.removeItem(result);
         Assert.That(!basket.Contents.Contains(result));
@@ -49,23 +54,22 @@ public class Tests
     [Test]
     public void changeCapacitytest()
     {
-        Item result = new Item("BGLE", 0.49f, "Bagel", "Everything");
         for(int i = 0; i < 10; i++)
         {
-            basket.addItem(result);
+            basket.addItem("BGLE");
         }
         Assert.That(basket.Contents.Count, Is.EqualTo(6));
         basket.Contents.Clear();
         basket.changeBasketSize(10);
         for (int i = 0; i < 10; i++)
         {
-            basket.addItem(result);
+            basket.addItem("BGLE");
         }
         Assert.That(basket.Contents.Count, Is.EqualTo(10));
     }
-    [Test]
+    [TestCase()]
     public void printTotalCostTest()
     {
-        
+        basket.Receipt.showTotal();
     }
 }
