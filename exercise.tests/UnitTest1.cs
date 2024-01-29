@@ -49,7 +49,18 @@ public class Tests
     [Test]
     public void changeCapacitytest()
     {
-        
+        Item result = new Item("BGLE", 0.49f, "Bagel", "Everything");
+        for(int i = 0; i < 10; i++)
+        {
+            basket.addItem(result);
+        }
+        Assert.That(basket.Contents.Count, Is.EqualTo(6));
+        basket.changeBasketSize(10);
+        for (int i = 0; i < 10; i++)
+        {
+            basket.addItem(result);
+        }
+        Assert.That(basket.Contents.Count, Is.EqualTo(10));
     }
     [Test]
     public void printTotalCostTest()
