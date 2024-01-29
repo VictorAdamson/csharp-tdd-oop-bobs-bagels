@@ -28,6 +28,13 @@ namespace exercise.main
             inventory.Add(new Item("FILH", 0.12f, "Filling", "Ham"));
 
         }
+        public void printMenu()
+        {
+            foreach(var item in inventory)
+            {
+                Console.WriteLine($"£{item.Price} | {item.Type}, {item.Variant} ");
+            }
+        }
         public bool inInventory(string SKU)
         {
             foreach(Item item in inventory)

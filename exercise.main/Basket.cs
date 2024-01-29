@@ -20,6 +20,7 @@ namespace exercise.main
             if (Contents.Count < _capacity)
             {
                 Contents.Add(item);
+                return item;
             }
             Console.WriteLine("Your basket is already full.");
             return item;
