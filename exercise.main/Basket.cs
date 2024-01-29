@@ -17,11 +17,23 @@ namespace exercise.main
         }
         public Item addItem(Item item)
         {
+            if (Contents.Count > 6)
+            {
+                Console.WriteLine("Your basket is already full.");
+            }
             Contents.Add(item);
             return item;
         }
         public Item removeItem(Item item)
         {
+            if (Contents.Contains(item))
+            {
+                Contents.Remove(item);
+            }
+            else
+            {
+                Console.WriteLine($"Your basket does not contain {item}.");
+            }
             return item;
         }
         public int changeBasketSize(int newSize)
